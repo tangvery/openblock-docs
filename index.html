@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>OpenBlock Document</title>
+    <link rel="stylesheet" type="text/css" href="html_assets/antd.min.css">
+    <link rel="stylesheet" type="text/css" href="html_assets/index.css">
+</head>
+
+<body>
+    <div id="app" class="f">
+        <table class="f">
+            <tbody class="f">
+                <tr valign="top" class="f">
+                    <td id="left" class="v">
+                        <div style="background: #fff;height: 64px;text-align: center;">
+                            <a onclick="loadDoc('#')">
+                                <img style="height:62px" src="html_assets/OpenBlock.png" />
+                            </a>
+                        </div>
+                        <div style="padding-left:15px;">
+                            <!-- 页内目录 -->
+                            <ul id="doc-index" style="list-style-type: none;padding-left:0px;">
+                                <li v-for="h in markdownDocument.headings">
+                                    <a onclick="rollTo(this.getAttribute('data-a'))" :data-a="h.id" :style="{fontSize: 24-(h.level)*2 + 'px' }">{{h.title}}</a>
+                                </li>
+                            </ul>
+                            <!-- 同级目录 -->
+                            <p v-if="markdownDocument.mates">相关内容：</p>
+                            <div id="mate-index" v-html="markdownDocument.mates"></div>
+                        </div>
+                    </td>
+
+                    <a-back-top />
+                    <td id="right" class="v">
+                        <div id="doc-content"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    </div>
+</body>
+<script src="html_assets/moment-with-locales.js"></script>
+<script src="html_assets/vue.min.js"></script>
+<script src="html_assets/antd-with-locales.min.js"></script>
+<script src="html_assets/zepto.min.js"></script>
+<script src="html_assets/commonmark.js"></script>
+<script src="html_assets/documents.js"></script>
+<script src="html_assets/index.js"></script>
+
+</html>
